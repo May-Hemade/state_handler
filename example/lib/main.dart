@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:example/offline.dart';
 import 'package:flutter/material.dart';
 import 'package:state_handler/state_handler.dart';
 import 'dart:math';
@@ -51,53 +52,65 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // return MaterialApp(
+    //   home: Scaffold(
+    //     appBar: AppBar(title: const Text("State Handler Example")),
+    //     body: StateHandler(
+    //       state: _currentState,
+    //       content: const Center(
+    //         child: Text(
+    //           "🎉 Content Loaded Successfully!",
+    //           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    //         ),
+    //       ),
+    //       errorWidget: Center(
+    //         child: Column(
+    //           mainAxisSize: MainAxisSize.min,
+    //           children: [
+    //             const Icon(Icons.error, size: 50, color: Colors.red),
+    //             const SizedBox(height: 10),
+    //             const Text(
+    //               "Oops! Something went wrong.",
+    //               style: TextStyle(fontSize: 18),
+    //             ),
+    //             const SizedBox(height: 10),
+    //             ElevatedButton(
+    //               onPressed: _loadData,
+    //               child: const Text("Retry"),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //       networkErrorWidget: Center(
+    //         child: Column(
+    //           children: [
+    //             const Icon(Icons.error, size: 50, color: Colors.red),
+    //             const SizedBox(height: 10),
+    //             const Text(
+    //               "Please check your network connection",
+    //               style: TextStyle(fontSize: 18),
+    //             ),
+    //             const SizedBox(height: 10),
+    //             ElevatedButton(
+    //               onPressed: _loadData,
+    //               child: const Text("Retry"),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //       onRetry: _loadData,
+    //     ),
+    //   ),
+    // );
+
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("State Handler Example")),
-        body: StateHandler(
-          state: _currentState,
-          content: const Center(
-            child: Text(
-              "🎉 Content Loaded Successfully!",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+        body: Center(
+          child: Container(
+            width: 900, // Canvas width
+            height: 500,
+            child: CustomPaint(painter: OfflineGame()),
           ),
-          errorWidget: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.error, size: 50, color: Colors.red),
-                const SizedBox(height: 10),
-                const Text(
-                  "Oops! Something went wrong.",
-                  style: TextStyle(fontSize: 18),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: _loadData,
-                  child: const Text("Retry"),
-                ),
-              ],
-            ),
-          ),
-          networkErrorWidget: Center(
-            child: Column(
-              children: [
-                const Icon(Icons.error, size: 50, color: Colors.red),
-                const SizedBox(height: 10),
-                const Text(
-                  "Please check your network connection",
-                  style: TextStyle(fontSize: 18),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: _loadData,
-                  child: const Text("Retry"),
-                ),
-              ],
-            ),
-          ),
-          onRetry: _loadData,
         ),
       ),
     );
